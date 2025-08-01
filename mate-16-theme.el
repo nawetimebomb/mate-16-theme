@@ -1,4 +1,4 @@
-;;; mate-16-theme.el --- An Emacs theme done while drinking mate on a development session.
+;;; mate-16-theme.el --- An Emacs theme done while drinking mate on a development session.  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2025 Nahuel J. Sacchetti
 
@@ -39,7 +39,7 @@
 
 ;;; Color Palette
 
-(let ((background        "#070707")
+(let ((background        "#050505")
       (foreground        "#a08563")
       (accent            "#0a0b62")
       (black             "#010101")
@@ -49,32 +49,35 @@
       (medium-light-gray "#616161")
       (light-gray        "#98a098")
       (red               "#e66250")
-      (orange            "#e9865d")
+      (orange            "#e27d51")
       (green             "#6b8e23")
       (yellow            "#cd950c")
       (blue              "#2855c7")
-      (magenta           "#b17dc1")
+      (magenta           "#875e9a")
       (cyan              "#5aa0b3"))
 
   (custom-theme-set-faces
    'mate-16
 
-   ;; Base Emacs
+   ;; base emacs
    `(default ((t (:background ,background :foreground ,foreground))))
    `(cursor ((t (:background ,yellow))))
    `(region ((t (:background ,accent))))
    `(highlight ((t (:background ,medium-dark-gray))))
-   `(fringe ((t (:background ,dark-gray))))
-   `(vertical-border ((t (:foreground ,dark-gray))))
-   `(minibuffer-prompt ((t (:foreground ,foreground :weight bold))))
-   `(line-number ((t (:foreground ,medium-light-gray :background ,black))))
-   `(line-number-current-line ((t (:background ,dark-gray :foreground ,foreground))))
+   `(fringe ((t (:background ,black))))
+   `(vertical-border ((t (:foreground ,medium-dark-gray))))
+   `(minibuffer-prompt ((t (:foreground ,yellow :weight bold))))
+   `(line-number ((t (:backgroud ,black :foreground ,medium-dark-gray :height 0.8))))
+   `(line-number-current-line ((t (:background ,dark-gray :foreground ,light-gray :height 0.8))))
    `(hl-line ((t (:background ,accent :foreground ,foreground))))
    `(link ((t (:foreground ,cyan :underline t))))
    `(link-visited ((t (:foreground ,magenta :underline t))))
+   `(button ((t (:inherit link))))
+   `(default-italic ((t (:italic t))))
+   `(bold ((t (:weight bold))))
 
-   ;; Programming
-   `(font-lock-builtin-face ((t (:foreground ,light-gray))))
+   ;; programming
+   `(font-lock-builtin-face ((t (:foreground ,magenta))))
    `(font-lock-comment-face ((t (:foreground ,orange))))
    `(font-lock-constant-face ((t (:foreground ,cyan))))
    `(font-lock-doc-face ((t (:foreground ,green))))
@@ -85,33 +88,47 @@
    `(font-lock-note-face ((t (:foreground ,green :weight bold))))
    `(font-lock-preprocessor-face ((t (:foreground ,magenta))))
    `(font-lock-string-face ((t (:foreground ,green))))
-   `(font-lock-type-face ((t (:foreground ,magenta))))
+   `(font-lock-type-face ((t (:foreground ,light-gray))))
    `(font-lock-variable-name-face ((t (:inherit 'default))))
    `(font-lock-warning-face ((t (:foreground ,red :weight bold))))
 
-   ;; Mode Line
-   `(mode-line ((t (:background ,foreground :foreground ,black :box nil))))
-   `(mode-line-inactive ((t (:background ,dark-gray :foreground ,foreground :box nil))))
+   ;; mode Line
+   `(mode-line ((t (:background ,dark-gray :foreground ,foreground :box nil))))
+   `(mode-line-inactive ((t (:background ,black :foreground ,medium-light-gray :box nil))))
 
-   ;; Search
-   `(isearch ((t (:background ,white :foreground ,black :weight bold))))
-   `(lazy-highlight ((t (:background ,accent :foreground ,white :weight bold))))
-   `(match ((t (:inherit lazy-highlight))))
+   ;; search
+   `(match ((t (:background ,accent :foreground ,white :weight semi-bold))))
+   `(isearch ((t (:background ,white :foreground ,black :weight semi-bold))))
+   `(isearch-fail ((t (:background ,red :foreground ,black :underline t))))
+   `(lazy-highlight ((t (:inherit match))))
 
-   ;; Org
-   `(org-level-1 ((t (:foreground ,yellow :weight bold))))
-   `(org-level-2 ((t (:foreground ,blue :weight bold))))
+   ;; ido
+   `(ido-first-match ((t (:weight bold))))
+   `(ido-only-match ((t (:weight bold))))
+   `(ido-subdir ((t (:foreground ,green))))
 
-   ;; Parens
+   ;; orderless
+   `(orderless-match-face-0 ((t (:inherit match))))
+   `(orderless-match-face-1 ((t (:inherit match))))
+   `(orderless-match-face-2 ((t (:inherit match))))
+   `(orderless-match-face-3 ((t (:inherit match))))
+
+   ;; org
+   `(org-level-1 ((t (:foreground ,yellow :weight semi-bold))))
+   `(org-level-2 ((t (:foreground ,blue :weight semi-bold))))
+
+   ;; parens
    `(show-paren-match ((t (:background ,nil :foreground ,white :weight bold))))
    `(show-paren-mismatch ((t (:background ,red :foreground ,white :weight bold))))
 
-   ;; UI
+   ;; ui
+   `(dired-directory ((t (:foreground ,foreground :weight bold))))
    `(tooltip ((t (:background ,medium-light-gray :foreground ,black))))
    `(error ((t (:foreground ,red :weight bold))))
    `(success ((t (:foreground ,green :weight bold))))
+   `(consult-file ((t (:foreground ,foreground))))
 
-   ;; Compilation and Flycheck
+   ;; compilation and flycheck
    `(flycheck-error ((t (:underline (:color ,red :style wave)))))
    `(compilation-info ((t (:foreground ,blue :inherit 'unspecified))))
    `(compilation-warning ((t (:foreground ,yellow :inherit 'unspecified))))
@@ -119,8 +136,10 @@
    `(compilation-mode-line-fail ((t (:foreground ,red :weight bold :inherit 'unspecified))))
    `(compilation-mode-line-exit ((t ( :foreground ,green :weight bold :inherit 'unspecified))))
 
-   ;; Vertico
-   `(vertico-current ((t (:inherit region))))))
+   ;; vertico
+   `(vertico-current ((t (:inherit region))))
+   `(vertico-group-title ((t (:foreground ,light-gray))))
+   `(vertico-current ((t (:foreground ,light-gray :strike-through t ))))))
 
 ;;; Footer
 
