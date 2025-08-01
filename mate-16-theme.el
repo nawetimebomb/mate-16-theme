@@ -124,10 +124,12 @@
 
 ;;; Footer
 
-;; ;;;###autoload
-;; (when load-file-name
-;;   (let ((dir (file-name-directory load-file-name)))
-;;     (unless (equal dir (expand-file-name "themes/" data-directory))
-;;       (add-to-list 'custom-theme-load-path dir))))
+;;;###autoload
+(when load-file-name
+  (add-to-list 'custom-theme-load-path
+               (file-name-as-directory (file-name-directory load-file-name))))
+
 
 (provide-theme 'mate-16)
+
+;;; mate-16-theme.el ends here
