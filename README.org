@@ -1,0 +1,15 @@
+* Mate 16 Theme
+
+I'm a night owl, and I go through my programming sessions while drinking mate. I wanted to build an Emacs theme that goes with all that and I found a combination of ideas from streams and other editors that would look good in these programming nights.
+
+So here it is, very dark background, yellow-ish foreground and a dash of more yellow for the cursor. Traditional old-style region, and only 16 colors, where most of them are actually a gray-scaled. The code looks clean, try not to be a color salad, org mode is also pretty straight forward.
+
+** Inspirations
+
+- Casey Muratori's streams about Handmade Hero
+- Jonathan Blow's theme (foreground color)
+- Rexim/Tsoding streams
+
+** Credits
+
+Created by Nahuel J. Sacchetti <git@nsacchetti.com>. Learn more about me at: https://cuentodelabuenapipa.com.
