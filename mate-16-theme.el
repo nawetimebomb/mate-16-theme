@@ -63,6 +63,7 @@
    `(default ((t (:background ,background :foreground ,foreground))))
    `(cursor ((t (:background ,yellow))))
    `(region ((t (:background ,accent))))
+   `(secondary-selection ((t (:background ,blue))))
    `(highlight ((t (:background ,medium-dark-gray))))
    `(fringe ((t (:background ,black))))
    `(vertical-border ((t (:foreground ,medium-dark-gray))))
@@ -114,8 +115,18 @@
    `(orderless-match-face-3 ((t (:inherit match))))
 
    ;; org
-   `(org-level-1 ((t (:foreground ,yellow :weight semi-bold))))
-   `(org-level-2 ((t (:foreground ,blue :weight semi-bold))))
+   `(org-block ((t (:background ,dark-gray :foreground ,foreground))))
+   `(org-block-begin-line ((t (:foreground ,foreground :weight bold))))
+   `(org-block-end-line ((t (:inherit org-block-begin-line))))
+   `(org-code ((t (:foreground ,light-gray))))
+   `(org-done ((t (:foreground ,green :weight bold))))
+   `(org-headline-done ((t (:strike-through t))))
+   `(org-level-1 ((t (:foreground ,yellow :weight bold))))
+   `(org-level-2 ((t (:foreground ,light-gray :weight semi-bold))))
+   `(org-level-3 ((t (:foreground ,foreground :weight semi-bold))))
+   `(org-level-4 ((t (:foreground ,foreground :weight semi-bold))))
+   `(org-level-5 ((t (:foreground ,foreground :weight medium))))
+   `(org-todo ((t (:foreground ,red :weight bold))))
 
    ;; parens
    `(show-paren-match ((t (:background ,nil :foreground ,white :weight bold))))
@@ -127,6 +138,10 @@
    `(error ((t (:foreground ,red :weight bold))))
    `(success ((t (:foreground ,green :weight bold))))
    `(consult-file ((t (:foreground ,foreground))))
+   `(completions-annotations ((t (:foreground ,foreground))))
+   `(completions-first-difference ((t (:foreground ,foreground))))
+   `(completions-common-part ((t (:foreground ,foreground))))
+   `(completions-highlight ((t (:foreground ,white))))
 
    ;; compilation and flycheck
    `(flycheck-error ((t (:underline (:color ,red :style wave)))))
